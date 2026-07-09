@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>领路人 · 校准室</title>
+<title>领路人 · The Mentor</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Instrument+Sans:wght@400;500&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
@@ -14,16 +14,17 @@
   <nav>
     <a class="nav-mark" href="index.html">The Mentor<span class="cn">领路人</span></a>
     <div class="nav-right">
-      <button class="linkish hidden" id="nav-home">回到书房</button>
-      <button class="linkish hidden" id="nav-arc">弧线文档</button>
-      <button class="linkish hidden" id="nav-signout">退出</button>
+      <button class="linkish hidden" id="nav-home" data-i18n="nav_home"></button>
+      <button class="linkish hidden" id="nav-arc" data-i18n="nav_arc"></button>
+      <button class="lang-toggle" id="lang-toggle">EN</button>
+      <button class="linkish hidden" id="nav-signout" data-i18n="nav_signout"></button>
     </div>
   </nav>
 
   <!-- 未登录 -->
   <section id="view-guard" class="hidden" style="text-align:center;padding:100px 0">
-    <p style="color:var(--muted)">请先登录。</p>
-    <a class="btn btn-ghost" href="index.html" style="margin-top:18px">去登录</a>
+    <p style="color:var(--muted)" data-i18n="guard"></p>
+    <a class="btn btn-ghost" href="index.html" style="margin-top:18px" data-i18n="guard_btn"></a>
   </section>
 
   <!-- 无弧线文档：入职 -->
@@ -31,61 +32,88 @@
     <header class="hero" style="padding:64px 0 36px">
       <div class="kicker">Onboarding</div>
       <h1 style="font-size:clamp(30px,4.5vw,44px)"><span class="serif">Your Arc</span><span class="cn">弧 线 文 档</span></h1>
-      <p class="hero-tag">领路人的一切建立在你的「弧线文档」之上——你在成为谁的长期叙事。<br>从一场深度访谈开始，或导入已有的文档。</p>
+      <p class="hero-tag" data-i18n="onboard_tag"></p>
     </header>
     <div class="home-actions" style="max-width:440px;margin:0 auto">
-      <button class="btn btn-amber" id="btn-interview">开始入职访谈（约 30–45 分钟）</button>
-      <button class="btn btn-ghost" id="btn-import">我已有弧线文档，直接导入</button>
+      <button class="btn btn-amber" id="btn-interview" data-i18n="btn_interview"></button>
+      <button class="btn btn-ghost" id="btn-import" data-i18n="btn_import"></button>
     </div>
     <div id="import-box" class="card hidden" style="margin-top:26px">
-      <div class="sec-label">粘贴弧线文档（markdown）</div>
-      <textarea class="field" id="import-text" rows="14" placeholder="# 弧线文档 · ……"></textarea>
-      <button class="btn btn-amber" id="btn-import-save" style="margin-top:14px">保存并进入书房</button>
+      <div class="sec-label" data-i18n="import_label"></div>
+      <textarea class="field" id="import-text" rows="14" placeholder="# ……"></textarea>
+      <button class="btn btn-amber" id="btn-import-save" style="margin-top:14px" data-i18n="btn_import_save"></button>
     </div>
   </section>
 
   <!-- 书房（主页） -->
   <section id="view-home" class="hidden">
-    <header class="hero" style="padding:64px 0 30px">
-      <div class="kicker" id="home-kicker">The Study</div>
+    <header class="hero" style="padding:56px 0 26px">
+      <div class="kicker">The Study</div>
       <h1 style="font-size:clamp(30px,4.5vw,44px)"><span class="serif">The Study</span><span class="cn">书 房</span></h1>
-      <p class="hero-tag" id="home-line">每周日晚，二十分钟，三个问题。</p>
+      <p class="hero-tag" data-i18n="home_line"></p>
     </header>
+
+    <!-- 旅程面板 -->
+    <div class="card journey" id="journey" style="max-width:520px;margin:0 auto 26px">
+      <div class="sec-label" data-i18n="journey_label"></div>
+      <div class="j-stats">
+        <div class="j-stat"><div class="j-num" id="j-sessions">0</div><div class="j-cap" data-i18n="j_sessions"></div></div>
+        <div class="j-stat"><div class="j-num" id="j-streak">0</div><div class="j-cap" data-i18n="j_streak"></div></div>
+        <div class="j-stat"><div class="j-num" id="j-next">–</div><div class="j-cap" id="j-next-cap" data-i18n="j_next"></div></div>
+      </div>
+      <div class="j-curve">
+        <div class="j-curve-head"><span class="sec-label" style="margin:0" data-i18n="energy_curve"></span><span class="note" id="curve-range"></span></div>
+        <div id="sparkline"></div>
+      </div>
+    </div>
+
     <div class="home-actions" style="max-width:440px;margin:0 auto">
-      <button class="btn btn-amber" id="btn-weekly">开始每周校准</button>
-      <button class="btn btn-ghost" id="btn-urgent">加急 · 我快熄火了</button>
-      <button class="btn btn-ghost" id="btn-view-arc">查看弧线文档</button>
+      <button class="btn btn-amber" id="btn-weekly" data-i18n="btn_weekly"></button>
+      <button class="btn btn-ghost" id="btn-urgent" data-i18n="btn_urgent"></button>
+      <button class="btn btn-ghost" id="btn-view-arc" data-i18n="btn_view_arc"></button>
+      <button class="btn btn-ghost" id="btn-calendar" data-i18n="btn_calendar"></button>
     </div>
   </section>
 
   <!-- 弧线文档 -->
   <section id="view-arc" class="hidden" style="padding:36px 0 80px">
-    <div class="sec-label">弧线文档 · 只有你能看到</div>
-    <div class="arc-view" id="arc-content"></div>
-    <p class="note" style="margin-top:14px">文档由每次校准后的「镌刻」自动更新。</p>
+    <div class="sec-label" data-i18n="arc_label"></div>
+    <div class="arc-view md" id="arc-content"></div>
+    <p class="note" style="margin-top:14px" data-i18n="arc_note"></p>
   </section>
 
   <!-- 校准室（对话） -->
   <section id="view-chat" class="hidden">
     <div style="display:flex;justify-content:space-between;align-items:center;padding-top:22px">
-      <div class="sec-label" id="chat-title" style="margin:0">每周校准</div>
-      <button class="btn btn-ghost" id="btn-end" style="padding:8px 16px;font-size:12px">结束并镌刻</button>
+      <div class="sec-label" id="chat-title" style="margin:0"></div>
+      <button class="btn btn-ghost" id="btn-end" style="padding:8px 16px;font-size:12px" data-i18n="end_engrave"></button>
     </div>
     <div class="chat" id="chat-log"></div>
     <div class="composer">
       <div class="wrap composer-inner">
-        <textarea class="field" id="chat-input" placeholder="说或写——想到哪说到哪，整理是领路人的事"></textarea>
-        <button class="btn btn-ghost" id="btn-voice" title="语音输入">🎙</button>
-        <button class="btn btn-amber" id="btn-send">发送</button>
+        <textarea class="field" id="chat-input" data-i18n-ph="chat_ph"></textarea>
+        <button class="btn btn-ghost" id="btn-voice" title="voice">🎙</button>
+        <button class="btn btn-amber" id="btn-send" data-i18n="send"></button>
       </div>
     </div>
   </section>
 </div>
 
+<!-- 动力打分 -->
+<div class="modal hidden" id="energy-modal">
+  <div class="card" style="max-width:420px;margin:0 22px">
+    <div class="sec-label" data-i18n="energy_q"></div>
+    <div class="energy-row" id="energy-row"></div>
+    <button class="linkish note" id="energy-skip" style="margin-top:14px;cursor:pointer;background:none;border:none" data-i18n="energy_skip"></button>
+  </div>
+</div>
+
 <div class="toast hidden" id="toast"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
 <script src="assets/js/config.js"></script>
+<script src="assets/js/i18n.js"></script>
 <script src="assets/js/app.js"></script>
 </body>
 </html>

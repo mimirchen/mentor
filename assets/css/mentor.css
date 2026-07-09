@@ -72,4 +72,34 @@ textarea.field{resize:vertical;min-height:88px;line-height:1.7}
 footer{padding:44px 0 60px;text-align:center;color:var(--faint);font-size:12px}
 footer a{color:var(--muted);text-decoration:none}
 .toast{position:fixed;top:18px;left:50%;transform:translateX(-50%);background:var(--panel);border:1px solid var(--hair);border-radius:4px;padding:10px 20px;font-size:13.5px;z-index:50}
+
+/* ---------- journey panel ---------- */
+.j-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:6px 0 20px;text-align:center}
+.j-num{font-family:"Cormorant Garamond",serif;font-size:34px;line-height:1.1;color:var(--cream)}
+.j-cap{font-size:11.5px;color:var(--faint);letter-spacing:.06em;margin-top:2px}
+.j-curve-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+#sparkline svg{display:block}
+
+/* ---------- energy modal ---------- */
+.modal{position:fixed;inset:0;background:rgba(10,10,12,.72);display:flex;align-items:center;justify-content:center;z-index:60}
+.energy-row{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;margin-top:6px}
+.energy-btn{appearance:none;background:transparent;border:1px solid var(--hair);border-radius:3px;color:var(--cream);font-family:inherit;font-size:14px;padding:10px 0;cursor:pointer;transition:all .15s}
+.energy-btn:hover{border-color:var(--amber);color:var(--amber)}
+
+/* ---------- rendered markdown ---------- */
+.md{white-space:normal}
+.md h1{font-family:"Cormorant Garamond","Noto Serif SC",serif;font-style:normal;font-size:24px;margin:0 0 18px;line-height:1.3}
+.md h2{font-size:17px;color:var(--amber);margin:26px 0 10px;font-weight:600}
+.md h3{font-size:15.5px;margin:18px 0 8px;font-weight:600}
+.md p{margin:0 0 12px}
+.md ul,.md ol{margin:0 0 14px;padding-left:22px}
+.md li{margin-bottom:6px}
+.md blockquote{border-left:2px solid var(--amber);padding-left:14px;color:var(--muted);margin:0 0 14px}
+.md strong{color:var(--cream)}
+.md em{color:var(--muted)}
+.md hr{border:none;border-top:1px solid var(--hair-soft);margin:22px 0}
+.md code{background:var(--bg-deep);padding:1px 6px;border-radius:3px;font-size:.9em}
+
+.lang-toggle{background:none;border:1px solid var(--hair);border-radius:999px;color:var(--muted);font-family:inherit;font-size:11.5px;letter-spacing:.08em;padding:4px 11px;cursor:pointer;transition:all .25s}
+.lang-toggle:hover{color:var(--cream);border-color:var(--cream)}
 @media (max-width:640px){ header.hero{padding:56px 0 40px} .card{padding:22px} }

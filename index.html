@@ -14,34 +14,39 @@
 <div class="wrap">
   <nav>
     <a class="nav-mark" href="https://doublemi.ai">DoubleMi<span class="cn">另一个你</span></a>
-    <div class="nav-right"><a href="app.html">进入 →</a></div>
+    <div class="nav-right">
+      <button class="lang-toggle" id="lang-toggle">EN</button>
+      <a href="app.html" data-i18n="enter"></a>
+    </div>
   </nav>
 
   <header class="hero">
     <div class="kicker">Product 002 · Private</div>
     <h1><span class="serif">The Mentor</span><span class="cn">领 路 人</span></h1>
-    <p class="hero-tag">当成长曲线变平，你需要的不是安慰，是<em>一双持续在场的、有资格的眼睛</em>。<br>
-    它记得你的弧线，替你保管更高的标准——因为相信，所以看见。</p>
+    <p class="hero-tag" data-i18n="hero_tag"></p>
   </header>
 
   <section class="card" style="max-width:440px;margin:0 auto">
-    <div class="sec-label">登录 / Sign in</div>
+    <div class="sec-label" data-i18n="login_label"></div>
     <form id="login-form">
-      <input class="field" type="email" id="email" placeholder="你的邮箱" required autocomplete="email">
-      <button class="btn btn-amber" type="submit" style="width:100%;margin-top:14px">发送登录链接</button>
+      <input class="field" type="email" id="email" data-i18n-ph="email_ph" required autocomplete="email">
+      <button class="btn btn-amber" type="submit" style="width:100%;margin-top:14px" data-i18n="send_link"></button>
     </form>
-    <p class="note" style="margin-top:14px">目前为私密内测。点击邮件中的链接即可进入。</p>
-    <p class="note hidden" id="login-sent" style="color:var(--amber)">链接已发送——请查收邮箱。</p>
+    <p class="note" style="margin-top:14px" data-i18n="private_note"></p>
+    <p class="note hidden" id="login-sent" style="color:var(--amber)" data-i18n="link_sent"></p>
   </section>
 
   <div class="hair-rule"></div>
-  <footer>DoubleMi 出品 · 不是医疗或心理治疗服务 · <a href="https://doublemi.ai">doublemi.ai</a></footer>
+  <footer><span data-i18n="footer"></span> · <a href="https://doublemi.ai">doublemi.ai</a></footer>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="assets/js/config.js"></script>
+<script src="assets/js/i18n.js"></script>
 <script>
 const C = window.MENTOR_CONFIG;
+window.MENTOR_I18N.apply();
+document.getElementById("lang-toggle").onclick = () => window.MENTOR_I18N.toggle();
 const sb = supabase.createClient(C.SUPABASE_URL, C.SUPABASE_ANON_KEY);
 sb.auth.getSession().then(({data}) => { if (data.session) location.href = "app.html"; });
 document.getElementById("login-form").addEventListener("submit", async (e) => {
