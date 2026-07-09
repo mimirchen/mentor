@@ -1,0 +1,75 @@
+/* 领路人 Mentor — design system
+   Kin of the DoubleMi family (ink black base) — accent is lantern amber, not seal red. */
+:root{
+  --bg:#16171A;
+  --bg-deep:#101114;
+  --panel:#1C1D21;
+  --cream:#ECEAE3;
+  --muted:#9C9C93;
+  --faint:#6E6E67;
+  --amber:#C9A227;
+  --amber-deep:#9A7B1B;
+  --hair:rgba(236,234,227,0.16);
+  --hair-soft:rgba(236,234,227,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--cream);
+  font-family:"Instrument Sans","Noto Sans SC",-apple-system,"PingFang SC",sans-serif;
+  -webkit-font-smoothing:antialiased;line-height:1.75;min-height:100vh;
+}
+::selection{background:var(--amber);color:var(--bg)}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+.wrap{max-width:760px;margin:0 auto;padding:0 22px}
+
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid var(--hair-soft)}
+nav .nav-mark{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:18px;color:var(--cream);text-decoration:none;letter-spacing:.04em}
+nav .nav-mark .cn{font-family:"Noto Serif SC",serif;font-style:normal;font-size:15px;color:var(--muted);margin-left:8px}
+nav .nav-right{display:flex;gap:16px;align-items:center;font-size:13px}
+nav a,nav button.linkish{color:var(--muted);text-decoration:none;background:none;border:none;font-family:inherit;font-size:13px;cursor:pointer;letter-spacing:.08em;transition:color .3s}
+nav a:hover,nav button.linkish:hover{color:var(--cream)}
+
+header.hero{padding:80px 0 56px;text-align:center}
+h1{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:clamp(40px,6vw,64px);line-height:1.1}
+h1 .cn{font-family:"Noto Serif SC",serif;font-style:normal;font-weight:400;font-size:.58em;display:block;margin-top:14px;letter-spacing:.3em;color:var(--muted)}
+.kicker{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--amber);margin-bottom:24px}
+.hero-tag{margin:26px auto 0;max-width:520px;color:var(--muted);font-size:15.5px}
+.hero-tag em{font-family:"Cormorant Garamond",serif;color:var(--cream);font-size:1.06em}
+
+.btn{appearance:none;border:1px solid var(--cream);background:var(--cream);color:var(--bg);font-family:inherit;font-size:13px;letter-spacing:.14em;padding:12px 24px;cursor:pointer;border-radius:2px;transition:opacity .25s;text-decoration:none;display:inline-block}
+.btn:hover{opacity:.85}
+.btn-ghost{background:transparent;color:var(--cream);border-color:var(--hair)}
+.btn-ghost:hover{border-color:var(--cream);opacity:1}
+.btn-amber{background:var(--amber);border-color:var(--amber);color:#171408}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+.btn-ghost.listening{border-color:var(--amber);color:var(--amber)}
+
+.field{width:100%;background:transparent;border:1px solid var(--hair);border-radius:2px;color:var(--cream);font-family:"Noto Serif SC",serif;font-size:15.5px;padding:13px 16px;outline:none;transition:border-color .3s}
+.field:focus{border-color:var(--amber)}
+textarea.field{resize:vertical;min-height:88px;line-height:1.7}
+
+.card{background:var(--panel);border:1px solid var(--hair-soft);border-radius:4px;padding:30px}
+.sec-label{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--faint);margin-bottom:12px}
+.note{color:var(--faint);font-size:12.5px;line-height:1.7}
+
+/* ---------- chat ---------- */
+.chat{display:flex;flex-direction:column;gap:18px;padding:28px 0 140px}
+.msg{max-width:92%;font-size:15.5px;white-space:pre-wrap}
+.msg.user{align-self:flex-end;background:var(--panel);border:1px solid var(--hair-soft);border-radius:6px 6px 2px 6px;padding:12px 16px;color:var(--cream)}
+.msg.mentor{align-self:flex-start;color:var(--cream)}
+.msg.mentor::before{content:"领路人";display:block;font-size:11px;letter-spacing:.3em;color:var(--amber);margin-bottom:6px}
+.msg.thinking{color:var(--faint);font-style:italic}
+.composer{position:fixed;left:0;right:0;bottom:0;background:linear-gradient(transparent,var(--bg) 26%);padding:34px 0 22px}
+.composer-inner{display:flex;gap:10px;align-items:flex-end}
+.composer textarea{flex:1;min-height:52px;max-height:180px;background:var(--panel)}
+.hidden{display:none !important}
+
+.home-actions{display:grid;gap:14px;margin-top:26px}
+.home-actions .btn{text-align:center;padding:16px}
+.arc-view{white-space:pre-wrap;font-family:"Noto Serif SC",serif;font-size:14.5px;line-height:1.9;color:var(--cream);background:var(--bg-deep);border:1px solid var(--hair-soft);border-radius:4px;padding:26px;max-height:70vh;overflow-y:auto}
+.hair-rule{width:64px;height:1px;background:var(--hair);margin:40px auto}
+footer{padding:44px 0 60px;text-align:center;color:var(--faint);font-size:12px}
+footer a{color:var(--muted);text-decoration:none}
+.toast{position:fixed;top:18px;left:50%;transform:translateX(-50%);background:var(--panel);border:1px solid var(--hair);border-radius:4px;padding:10px 20px;font-size:13.5px;z-index:50}
+@media (max-width:640px){ header.hero{padding:56px 0 40px} .card{padding:22px} }

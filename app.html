@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>领路人 · 校准室</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Instrument+Sans:wght@400;500&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/mentor.css">
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="nav-mark" href="index.html">The Mentor<span class="cn">领路人</span></a>
+    <div class="nav-right">
+      <button class="linkish hidden" id="nav-home">回到书房</button>
+      <button class="linkish hidden" id="nav-arc">弧线文档</button>
+      <button class="linkish hidden" id="nav-signout">退出</button>
+    </div>
+  </nav>
+
+  <!-- 未登录 -->
+  <section id="view-guard" class="hidden" style="text-align:center;padding:100px 0">
+    <p style="color:var(--muted)">请先登录。</p>
+    <a class="btn btn-ghost" href="index.html" style="margin-top:18px">去登录</a>
+  </section>
+
+  <!-- 无弧线文档：入职 -->
+  <section id="view-onboard" class="hidden">
+    <header class="hero" style="padding:64px 0 36px">
+      <div class="kicker">Onboarding</div>
+      <h1 style="font-size:clamp(30px,4.5vw,44px)"><span class="serif">Your Arc</span><span class="cn">弧 线 文 档</span></h1>
+      <p class="hero-tag">领路人的一切建立在你的「弧线文档」之上——你在成为谁的长期叙事。<br>从一场深度访谈开始，或导入已有的文档。</p>
+    </header>
+    <div class="home-actions" style="max-width:440px;margin:0 auto">
+      <button class="btn btn-amber" id="btn-interview">开始入职访谈（约 30–45 分钟）</button>
+      <button class="btn btn-ghost" id="btn-import">我已有弧线文档，直接导入</button>
+    </div>
+    <div id="import-box" class="card hidden" style="margin-top:26px">
+      <div class="sec-label">粘贴弧线文档（markdown）</div>
+      <textarea class="field" id="import-text" rows="14" placeholder="# 弧线文档 · ……"></textarea>
+      <button class="btn btn-amber" id="btn-import-save" style="margin-top:14px">保存并进入书房</button>
+    </div>
+  </section>
+
+  <!-- 书房（主页） -->
+  <section id="view-home" class="hidden">
+    <header class="hero" style="padding:64px 0 30px">
+      <div class="kicker" id="home-kicker">The Study</div>
+      <h1 style="font-size:clamp(30px,4.5vw,44px)"><span class="serif">The Study</span><span class="cn">书 房</span></h1>
+      <p class="hero-tag" id="home-line">每周日晚，二十分钟，三个问题。</p>
+    </header>
+    <div class="home-actions" style="max-width:440px;margin:0 auto">
+      <button class="btn btn-amber" id="btn-weekly">开始每周校准</button>
+      <button class="btn btn-ghost" id="btn-urgent">加急 · 我快熄火了</button>
+      <button class="btn btn-ghost" id="btn-view-arc">查看弧线文档</button>
+    </div>
+  </section>
+
+  <!-- 弧线文档 -->
+  <section id="view-arc" class="hidden" style="padding:36px 0 80px">
+    <div class="sec-label">弧线文档 · 只有你能看到</div>
+    <div class="arc-view" id="arc-content"></div>
+    <p class="note" style="margin-top:14px">文档由每次校准后的「镌刻」自动更新。</p>
+  </section>
+
+  <!-- 校准室（对话） -->
+  <section id="view-chat" class="hidden">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:22px">
+      <div class="sec-label" id="chat-title" style="margin:0">每周校准</div>
+      <button class="btn btn-ghost" id="btn-end" style="padding:8px 16px;font-size:12px">结束并镌刻</button>
+    </div>
+    <div class="chat" id="chat-log"></div>
+    <div class="composer">
+      <div class="wrap composer-inner">
+        <textarea class="field" id="chat-input" placeholder="说或写——想到哪说到哪，整理是领路人的事"></textarea>
+        <button class="btn btn-ghost" id="btn-voice" title="语音输入">🎙</button>
+        <button class="btn btn-amber" id="btn-send">发送</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="toast hidden" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

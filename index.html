@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>领路人 · The Mentor — DoubleMi</title>
+<meta name="description" content="一位持续在场的精神领路人：为能力强于舞台的人保管命运叙事。私密内测中。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Instrument+Sans:wght@400;500&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/mentor.css">
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="nav-mark" href="https://doublemi.ai">DoubleMi<span class="cn">另一个你</span></a>
+    <div class="nav-right"><a href="app.html">进入 →</a></div>
+  </nav>
+
+  <header class="hero">
+    <div class="kicker">Product 002 · Private</div>
+    <h1><span class="serif">The Mentor</span><span class="cn">领 路 人</span></h1>
+    <p class="hero-tag">当成长曲线变平，你需要的不是安慰，是<em>一双持续在场的、有资格的眼睛</em>。<br>
+    它记得你的弧线，替你保管更高的标准——因为相信，所以看见。</p>
+  </header>
+
+  <section class="card" style="max-width:440px;margin:0 auto">
+    <div class="sec-label">登录 / Sign in</div>
+    <form id="login-form">
+      <input class="field" type="email" id="email" placeholder="你的邮箱" required autocomplete="email">
+      <button class="btn btn-amber" type="submit" style="width:100%;margin-top:14px">发送登录链接</button>
+    </form>
+    <p class="note" style="margin-top:14px">目前为私密内测。点击邮件中的链接即可进入。</p>
+    <p class="note hidden" id="login-sent" style="color:var(--amber)">链接已发送——请查收邮箱。</p>
+  </section>
+
+  <div class="hair-rule"></div>
+  <footer>DoubleMi 出品 · 不是医疗或心理治疗服务 · <a href="https://doublemi.ai">doublemi.ai</a></footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script>
+const C = window.MENTOR_CONFIG;
+const sb = supabase.createClient(C.SUPABASE_URL, C.SUPABASE_ANON_KEY);
+sb.auth.getSession().then(({data}) => { if (data.session) location.href = "app.html"; });
+document.getElementById("login-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = document.getElementById("email").value.trim();
+  const { error } = await sb.auth.signInWithOtp({
+    email, options: { emailRedirectTo: C.SITE_URL + "/app.html" }
+  });
+  if (error) { alert(error.message); return; }
+  document.getElementById("login-sent").classList.remove("hidden");
+});
+</script>
+</body>
+</html>
