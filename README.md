@@ -2,7 +2,7 @@
 
 一位持续在场的精神领路人：为"能力强于舞台"的高成就者保管命运叙事。
 
-**DoubleMi 出品 · Product 002 候选**（n=1 dogfood 阶段，六周后评估是否产品化）。部署到 **mentor.doublemi.ai**。与全家产品共用同一个 Supabase 项目。
+**DoubleMi 出品 · Product 001**（n=1 dogfood 阶段，六周后评估是否全面产品化）。部署到 **mentor.doublemi.ai**。与全家产品共用同一个 Supabase 项目。
 
 ## 产品三支柱（缺一即沦为聊天套壳）
 
@@ -15,10 +15,13 @@
 ```
 index.html                     登录页
 app.html                       书房 + 校准室 + 弧线文档
+gallery.html                   回音廊：匿名分享"一段路" + 「同路」共鸣
 assets/js/config.js            ← 唯一需要编辑的配置
 assets/js/app.js               前端逻辑（auth / 会话 / 蒸馏 / 语音）
 assets/css/mentor.css          设计系统（墨黑 + 琥珀金）
 supabase/schema.sql            三张表 + owner-only RLS（已应用）
+supabase/gallery.sql           回音廊两张表（已应用）：分享进表 approved=false，
+                               馆长在 Table Editor 翻 approved 上廊；共鸣每访客一次
 supabase/functions/mentor-chat 模型网关：人格 + 访谈/校准/蒸馏三模式
 ```
 
