@@ -205,6 +205,11 @@ async function callFunction(body) {
   });
   const json = await resp.json().catch(() => ({}));
   if (!resp.ok) {
+    if (json.error === "waitlist") {
+      // not yet invited: quietly queue them so the curator sees the demand
+      sb.from("waitlist").insert({ email: session.user.email, locale: I.lang, source: "mentor" }).then(() => {});
+      throw new Error(I.t("err_waitlist"));
+    }
     const map = { mentor_not_configured: I.t("err_config"), daily_cap: I.t("err_cap"), unauthorized: I.t("err_auth") };
     throw new Error(map[json.error] || I.t("err_generic"));
   }

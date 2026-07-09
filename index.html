@@ -31,9 +31,11 @@
     <div class="sec-label" data-i18n="login_label"></div>
     <form id="login-form">
       <input class="field" type="email" id="email" data-i18n-ph="email_ph" required autocomplete="email">
-      <button class="btn btn-amber" type="submit" style="width:100%;margin-top:14px" data-i18n="send_link"></button>
+      <button class="btn btn-amber" type="button" id="btn-waitlist" style="width:100%;margin-top:14px" data-i18n="wl_btn"></button>
+      <button class="btn btn-ghost" type="submit" style="width:100%;margin-top:10px" data-i18n="send_link"></button>
     </form>
     <p class="note" style="margin-top:14px" data-i18n="private_note"></p>
+    <p class="note hidden" id="wl-ok" style="color:var(--amber)" data-i18n="wl_ok"></p>
     <p class="note hidden" id="login-sent" style="color:var(--amber)" data-i18n="link_sent"></p>
   </section>
 
@@ -57,7 +59,18 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     email, options: { emailRedirectTo: C.SITE_URL + "/app.html" }
   });
   if (error) { alert(error.message); return; }
+  document.getElementById("wl-ok").classList.add("hidden");
   document.getElementById("login-sent").classList.remove("hidden");
+});
+document.getElementById("btn-waitlist").addEventListener("click", async () => {
+  const email = document.getElementById("email").value.trim();
+  if (!email || !email.includes("@")) { document.getElementById("email").focus(); return; }
+  const { error } = await sb.from("waitlist").insert({
+    email, locale: window.MENTOR_I18N.lang, source: "mentor"
+  });
+  if (error && error.code !== "23505") { alert(error.message); return; } // already queued: fine
+  document.getElementById("login-sent").classList.add("hidden");
+  document.getElementById("wl-ok").classList.remove("hidden");
 });
 </script>
 </body>

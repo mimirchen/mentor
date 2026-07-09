@@ -22,7 +22,10 @@ assets/css/mentor.css          设计系统（墨黑 + 琥珀金）
 supabase/schema.sql            三张表 + owner-only RLS（已应用）
 supabase/gallery.sql           回音廊两张表（已应用）：分享进表 approved=false，
                                馆长在 Table Editor 翻 approved 上廊；共鸣每访客一次
-supabase/functions/mentor-chat 模型网关：人格 + 访谈/校准/蒸馏三模式
+supabase/allowlist.sql         内测白名单（已应用）：不在 mentor_allowlist 的用户
+                               能注册、能看回音廊，但对话返回排队提示并自动进 waitlist。
+                               放行一个人 = Table Editor 加一行 email
+supabase/functions/mentor-chat 模型网关：人格 + 访谈/校准/蒸馏三模式 + 白名单闸门
 ```
 
 ## 部署

@@ -1,4 +1,4 @@
-// 领路人 Mentor — Edge Function (DoubleMi Product 002 candidate)
+// 领路人 Mentor — Edge Function (DoubleMi Product 001)
 // Deploy: npx supabase functions deploy mentor-chat --project-ref gvuhoeaaykbycscxkzqg --no-verify-jwt=false
 // Secrets: ANTHROPIC_API_KEY (set via dashboard or `supabase secrets set`)
 // SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY are injected automatically.
@@ -102,6 +102,15 @@ Deno.serve(async (req) => {
       Deno.env.get("SUPABASE_URL")!,
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
     );
+
+    // --- private beta gate: only allowlisted emails may talk to the mentor ---
+    const email = (userData.user.email ?? "").toLowerCase();
+    const { data: allowed } = await svc
+      .from("mentor_allowlist")
+      .select("email")
+      .eq("email", email)
+      .maybeSingle();
+    if (!allowed) return json({ error: "waitlist" }, 403);
 
     // --- rate limit: messages in the last 24h ---
     const since = new Date(Date.now() - 24 * 3600 * 1000).toISOString();
