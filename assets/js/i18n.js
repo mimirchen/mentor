@@ -152,6 +152,8 @@ window.MENTOR_I18N = (() => {
       gal_anon: "A fellow traveler",
     },
   };
+  const urlLang = new URLSearchParams(location.search).get("lang");
+  if (urlLang === "zh" || urlLang === "en") localStorage.setItem("mentor_lang", urlLang);
   let lang = localStorage.getItem("mentor_lang") || (/^zh/.test(navigator.language) ? "zh" : "en");
   const t = (k) => (dict[lang] && dict[lang][k]) ?? dict.zh[k] ?? k;
   function apply() {
