@@ -23,10 +23,10 @@ const CONTENT_QUEUE: Record<string, { title: string; body: string; images: strin
 不是咨询,不是治疗,更像一位真正的导师偶遇时跟你说的那席话。
 
 现在是小规模内测,一次只放行几个人(它很贵,而且我想守住质量)。
-排队入口:mentor.doublemi.ai。开门时第一时间叫你。
+想排队的,评论区扣一个「排队」,我一个个私信你门牌号。
 
 对了,它有一条走廊叫「回音廊」,挂着同路人匿名分享的"一段路"。
-你可以先去走走——看看别人是怎么从熄火里重新点着的。
+想先去走走,看看别人怎么从熄火里重新点着的——也扣我。
 
 #职业倦怠 #高敏感高成就 #自我成长 #AI #人生规划`,
     images: "书房截图(动力曲线) + 回音廊截图 + 落地页截图,3:4 竖版",
@@ -37,7 +37,7 @@ const CONTENT_QUEUE: Record<string, { title: string; body: string; images: strin
 所以我做了个小东西:对它说 30 秒昨夜的梦,它用蚀刻线条把梦刻下来——像 18 世纪的铜版画,带编号、日期,和一句注解。
 这是我的第 1 夜。图案志说,我梦里最常来的是水。
 你昨晚梦见什么了?评论区写下来,我挑几个亲手刻成版回复你 🌙
-自己刻:dream.doublemi.ai
+想自己刻的,扣「刻梦」,馆长私信你门牌号。
 
 #梦境 #AI绘画 #手账 #记录生活 #铜版画 #梦境日记`,
     images: "你的 Plate No.001 卡片 + 制版台截图",
@@ -49,7 +49,7 @@ const CONTENT_QUEUE: Record<string, { title: string; body: string; images: strin
 第二种更难受,因为所有人都劝你"要不要休个假",
 而你心里清楚:放假回来,车还在车库里。
 领路人是给第二种人做的。低谷不是忍耐的信号,是重新部署的信号。
-(内测排队:mentor.doublemi.ai)
+(想排队内测的,评论区扣「排队」)
 
 #职业倦怠 #内耗 #职场 #自我成长`,
     images: "深底琥珀金文字卡(标题那句话做成图)",
@@ -61,7 +61,7 @@ const CONTENT_QUEUE: Record<string, { title: string; body: string; images: strin
 觅梦把它们做成了 12 个母题图案,每刻一块版,图案志就记一笔。
 日子久了,你会看见自己夜晚的地形图。
 (注解是诗意的旁白,不是心理分析~)
-dream.doublemi.ai
+想看看你自己的夜晚地形图,评论区扣「刻梦」。
 
 #心理学 #梦境 #荣格 #冷知识 #AI`,
     images: "牙/追/钟三张母题卡片",
